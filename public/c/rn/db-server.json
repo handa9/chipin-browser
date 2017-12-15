@@ -1,0 +1,38 @@
+{
+  "name": "db-server",
+  "serviceEngines": [
+    {
+      "class": "DatabaseRegistry",
+      "database": "alerts",
+      "metadata": {"$include": "/c/db/alerts.json"}
+    },
+    {
+      "class": "ContextManager",
+      "database": "alerts"
+    },
+    {
+      "class": "UpdateManager",
+      "database": "alerts",
+      "subset": "wholeContents"
+    },
+    {
+      "class": "SubsetStorage",
+      "database": "alerts",
+      "subset": "wholeContents",
+      "exported": true,
+      "type": "persistent"
+    },
+    {
+      "class": "UpdateManager",
+      "database": "alerts",
+      "subset": "activeInfomation"
+    },
+    {
+      "class": "SubsetStorage",
+      "database": "alerts",
+      "subset": "activeInfomation",
+      "exported": true,
+      "type": "cache"
+    }
+  ]
+}

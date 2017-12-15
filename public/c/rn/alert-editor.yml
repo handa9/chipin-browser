@@ -1,0 +1,20 @@
+name: alert-editor
+serviceEngines:
+- class: alertEditor
+- class: DatabaseRegistry
+  database: alerts
+  metadata:
+    {% ciNodeConfig ref="/c/db/alerts.yml" %}
+- class: Dadget
+  database: alerts
+- class: QueryHandler
+  database: alerts
+  subset: wholeContents
+- class: QueryHandler
+  database: alerts
+  subset: activeInfomation
+- class: SubsetStorage
+  database: alerts
+  subset: activeInfomation
+  exported: false
+  type: cache
