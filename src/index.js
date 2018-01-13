@@ -34,11 +34,12 @@ node.start().then(() => {
   }
   let dadget = seList[0];
   window.dadget = dadget
-  dadget.query({ alertClass: "EvacuationOrder", date: { $gt: "2017-08-07T10:23:00" } }, { title: -1 })
+  dadget.query({ alertClass: "EvacuationOrder", date: { $gt: "2017-08-07T10:23:00" } }, { title: -1 }, null, null, 10, "latest")
     .then((result) => {
       //検索完了後の処理
       let list = []
       console.log("aaaaaa")
+      console.dir(result)
       for (let row of result.resultSet) {
         list.push({
           id: row._id,
@@ -90,7 +91,9 @@ node.start().then(() => {
       }
     })
       .then(result => {
-        // 登録に成功したときの処理
+        console.log("hhhhhhhhhhhhh")
+        dadget.query({ alertClass: "EvacuationOrder", date: { $gt: "2017-08-07T10:23:00" } }, { title: -1 })
+            // 登録に成功したときの処理
         store.dispatch({
           type: 'ADD_TODO',
           item: {
